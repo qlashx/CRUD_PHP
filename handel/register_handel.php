@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     if ($res->num_rows == 0) {
         $sql = "INSERT INTO users (name, email, phone,pass)
     VALUES ('{$name}', '{$email}', '{$phone}','{$pass}')";
-        $ress = mysqli_query($conn, $check);
+        $ress = mysqli_query($conn, $sql);
         header("location:../login.php");
     } else {
         $_SESSION['error'] = 1;

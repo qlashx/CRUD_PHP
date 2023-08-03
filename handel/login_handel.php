@@ -10,11 +10,12 @@ if (isset($_POST['submit'])) {
     $sql = "SELECT * FROM `users` WHERE `email`='$email' AND `pass`='$pass'";
     $result = mysqli_query($conn, $sql);
     if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['name'] = $row['name'];
-        $_SESSION['email'] = $row['email'];
-        $_SESSION['phone'] = $row['phone'];
+        $res = $result->fetch_assoc();
+        $_SESSION['id'] = $res['id'];
+        $_SESSION['name'] = $res['name'];
+        $_SESSION['email'] = $res['email'];
+        $_SESSION['phone'] = $res['phone'];
+
         header("location: ../show-data.php");
     } else {
         $_SESSION['error'] = 1;
